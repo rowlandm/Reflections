@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+	/* OK , I need a date field */
+	
+	/* I also need a title for this edit text content */
+    <EditText android:id="@+id/edittext"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:inputType="textAutoCorrect|textCapSentences|textMultiLine"
+        android:maxLength="200"/>
+        	
+	<RatingBar android:id="@+id/ratingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"/>
+        
+    /* I also then need a next button */
+    <Button android:id="@+id/next_button_id"
+     android:layout_height="wrap_content"
+     android:layout_width="wrap_content"
+     android:text="@string/next"/>
+                
+</LinearLayout>
+
