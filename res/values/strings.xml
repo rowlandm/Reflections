@@ -3,4 +3,5 @@
     <string name="hello">Hello World, This is the application reflections!</string>
     <string name="app_name">Reflections</string>
 <string name="next">Next</string>
+<string name="label_edittext">Message</string>
 </resources>
