@@ -13,9 +13,29 @@ import android.widget.RatingBar.OnRatingBarChangeListener;
 
 public class reflections extends Activity {
 	
-	/* need to reuse the main.xml */
-	/* http://developer.android.com/resources/articles/layout-tricks-reuse.html */
-	
+	/* List of questions to ask */
+	/*
+	 * Good thing to do again
+	 * Thing to improve
+	 * Actions that stemmed from want of praise
+	 * Something new learned
+	 * Spiritual
+	 * Imagine if I didn't worry about....
+	 * Romance
+	 * What really annoyed me for no good reason
+	 * Rejection
+	 * Rescuer, Victim and Persecutor
+	 * Good things I did today
+	 * Good things she did
+	 * Was I harsh on myself?
+	 * What did I say I would do?
+	 * Organise for tomorrow
+	 * What did I do to improve my health
+	 * Update Resume
+	 * Interesting website
+	 * What surprised me today
+	 * 
+	 */
 	
 	
     /** Called when the activity is first created. */
