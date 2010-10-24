@@ -12,6 +12,12 @@ import android.widget.Toast;
 import android.widget.RatingBar.OnRatingBarChangeListener;
 
 public class reflections extends Activity {
+	
+	/* need to reuse the main.xml */
+	/* http://developer.android.com/resources/articles/layout-tricks-reuse.html */
+	
+	
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,7 +52,7 @@ public class reflections extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-            	Toast.makeText(reflections.this, "You have clicked the next button", Toast.LENGTH_SHORT).show();
+            	Toast.makeText(reflections.this, "You have clicked the next button - good on you", Toast.LENGTH_SHORT).show();
             }
         });
         
