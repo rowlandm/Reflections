@@ -53,6 +53,18 @@ public class reflections extends Activity {
 	 * What surprised me today
 	 * 
 	 */
+	int currentQuestion = 0;
+	Question[] questions;
+	
+	public void showNextQuestion(){
+  		setContentView(R.layout.main);
+    	
+    	TextView labelText = (TextView) findViewById(R.id.label_edittext);
+    	
+    	labelText.setText(questions[this.currentQuestion].question);	
+	
+    	this.currentQuestion++;
+	}
 	
 	
     /** Called when the activity is first created. */
@@ -61,25 +73,16 @@ public class reflections extends Activity {
     	super.onCreate(savedInstanceState);
     	
     	// setup a basic array
-    	Question[] questions;
+    	
     	questions = new Question[] { 
-    			//new Question(0,"What did I do well today?",1), new Question(1,"What can I do better",1)
-    			new Question(0,"What did I do well in today?",1)
+    			new Question(0,"What did I do well at today?",1), new Question(1,"What can I do better",1)
     	};
     	
-    	setContentView(R.layout.main);
     	
-    	TextView labelText = (TextView) findViewById(R.id.label_edittext);
+    	// do the first question
+    	this.showNextQuestion();
+    
     	
-    	for(int i = 0; i < questions.length; i++){
-  	      if(questions[i] != null) { // Can test for null reference
-  	    	
-      		labelText.setText(questions[i].question);
-  	      }
-    	}
-        
-    	//labelText.setText("another one please");
-        
         
         /* Do something when text is entered */
         final EditText edittext = (EditText) findViewById(R.id.edittext);
@@ -110,6 +113,7 @@ public class reflections extends Activity {
             public void onClick(View v) {
                 // Perform action on click
             	Toast.makeText(reflections.this, "You have clicked the next button - good on you", Toast.LENGTH_SHORT).show();
+            	reflections.this.showNextQuestion();
             }
         });
         
