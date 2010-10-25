@@ -14,13 +14,11 @@ import android.widget.RatingBar.OnRatingBarChangeListener;
 
 class Question {
 	
-	int id = 0;
 	String  question = "";
 	int active = 0;
 	
-	Question(int i,String q,int a) {
+	Question(String q,int a) {
 		
-		id = i;
 		question = q;
 		active = a;
 		
@@ -53,38 +51,50 @@ public class reflections extends Activity {
 	 * What surprised me today
 	 * 
 	 */
-	int currentQuestion = 0;
+	int currentQuestion = -1;
 	Question[] questions;
 	
 	public void showNextQuestion(){
+		
+		if (this.currentQuestion + 1 == questions.length)
+  			return;
+		
+		this.currentQuestion++;
+  		
+  		
+  		
   		setContentView(R.layout.main);
     	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
     	
     	labelText.setText(questions[this.currentQuestion].question);	
-	
-    	this.currentQuestion++;
+
+    	this.setupTriggers();
+    	
 	}
 	
+	public void showPrevQuestion(){
+		
+		if (this.currentQuestion == 0) 
+    		return;
+		
+		this.currentQuestion = this.currentQuestion - 1 ;
+    	
+    	
+		
+		setContentView(R.layout.main);
+    	
+    	TextView labelText = (TextView) findViewById(R.id.label_edittext);
+    	
+    	labelText.setText(questions[this.currentQuestion].question);	
 	
-    /** Called when the activity is first created. */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-    	super.onCreate(savedInstanceState);
+    	this.setupTriggers();
     	
-    	// setup a basic array
-    	
-    	questions = new Question[] { 
-    			new Question(0,"What did I do well at today?",1), new Question(1,"What can I do better",1)
-    	};
-    	
-    	
-    	// do the first question
-    	this.showNextQuestion();
-    
-    	
-        
-        /* Do something when text is entered */
+	}	
+	
+	public void setupTriggers() {
+		
+		/* Do something when text is entered */
         final EditText edittext = (EditText) findViewById(R.id.edittext);
         edittext.setOnKeyListener(new OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -107,6 +117,16 @@ public class reflections extends Activity {
             }
         });
         
+        /* button to go to the previous view */
+        final Button buttonPrev = (Button) findViewById(R.id.prev_button_id);
+        buttonPrev.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            	Toast.makeText(reflections.this, "You have clicked the previous button - good on you", Toast.LENGTH_SHORT).show();
+            	reflections.this.showPrevQuestion();
+            }
+        });        
+        
         /* button to go to the next view */
         final Button button = (Button) findViewById(R.id.next_button_id);
         button.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +135,32 @@ public class reflections extends Activity {
             	Toast.makeText(reflections.this, "You have clicked the next button - good on you", Toast.LENGTH_SHORT).show();
             	reflections.this.showNextQuestion();
             }
-        });
+        });		
+		
+		
+	}
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+    	super.onCreate(savedInstanceState);
+    	
+    	// setup a basic array
+    	
+    	questions = new Question[] { 
+    			new Question("What did I do well at today?",1), 
+    			new Question("What can I do better?",1),
+    			new Question("What actions came from want of praise?",1),
+    			new Question("Rejection?",1)
+    	};
+    	
+    	
+    	// do the first question
+    	this.showNextQuestion();
+        
+        
         
     }
+    
+    
+    
 }

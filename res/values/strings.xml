@@ -5,4 +5,5 @@
 <string name="next">Next</string>
 <string name="label_edittext">Message</string>
 <string name="label_editdate">Date</string>
+<string name="previous">Previous</string>
 </resources>

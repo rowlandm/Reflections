@@ -19,7 +19,8 @@ public final class R {
         public static final int edittext=0x7f050004;
         public static final int label_editdate=0x7f050000;
         public static final int label_edittext=0x7f050003;
-        public static final int next_button_id=0x7f050006;
+        public static final int next_button_id=0x7f050007;
+        public static final int prev_button_id=0x7f050006;
         public static final int ratingbar=0x7f050005;
     }
     public static final class layout {
@@ -32,5 +33,6 @@ public final class R {
         public static final int label_editdate=0x7f040004;
         public static final int label_edittext=0x7f040003;
         public static final int next=0x7f040002;
+        public static final int previous=0x7f040005;
     }
 }
