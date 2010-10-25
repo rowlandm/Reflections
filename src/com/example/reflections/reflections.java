@@ -8,8 +8,25 @@ import android.view.View.OnKeyListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.RatingBar.OnRatingBarChangeListener;
+
+class Question {
+	
+	int id = 0;
+	String  question = "";
+	int active = 0;
+	
+	Question(int i,String q,int a) {
+		
+		id = i;
+		question = q;
+		active = a;
+		
+	}
+	
+}
 
 public class reflections extends Activity {
 	
@@ -42,7 +59,27 @@ public class reflections extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+    	
+    	// setup a basic array
+    	Question[] questions;
+    	questions = new Question[] { 
+    			//new Question(0,"What did I do well today?",1), new Question(1,"What can I do better",1)
+    			new Question(0,"What did I do well in today?",1)
+    	};
+    	
+    	setContentView(R.layout.main);
+    	
+    	TextView labelText = (TextView) findViewById(R.id.label_edittext);
+    	
+    	for(int i = 0; i < questions.length; i++){
+  	      if(questions[i] != null) { // Can test for null reference
+  	    	
+      		labelText.setText(questions[i].question);
+  	      }
+    	}
+        
+    	//labelText.setText("another one please");
+        
         
         /* Do something when text is entered */
         final EditText edittext = (EditText) findViewById(R.id.edittext);
