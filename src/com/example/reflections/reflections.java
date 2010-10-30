@@ -1,18 +1,20 @@
 package com.example.reflections;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnKeyListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.RatingBar.OnRatingBarChangeListener;
-import android.view.Menu;
-import android.view.MenuItem;
 
 
 class Question {
@@ -28,6 +30,8 @@ class Question {
 	}
 	
 }
+
+
 
 public class reflections extends Activity {
 	
@@ -56,6 +60,7 @@ public class reflections extends Activity {
 	 */
 	int currentQuestion = -1;
 	Question[] questions;
+	
 	private ReflectionsDbAdapter mDbHelper;
 	public static final int INSERT_ID = Menu.FIRST;
 	
@@ -65,8 +70,6 @@ public class reflections extends Activity {
   			return;
 		
 		this.currentQuestion++;
-  		
-  		
   		
   		setContentView(R.layout.main);
     	
@@ -180,11 +183,32 @@ public class reflections extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case INSERT_ID:
-        	Toast.makeText(reflections.this, "You have clicked the menu  button - good on you", Toast.LENGTH_SHORT).show();
+        	saveResponse();
             return true;
         }
        
         return super.onOptionsItemSelected(item);
+    }
+    
+    
+    public void saveResponse(){
+    	
+    	mDbHelper.createResponse("20101220", "What do I do well today", "Took Zane to the Planetarium", 4);
+    	
+    	Cursor c = mDbHelper.fetchAllResponses();
+    	startManagingCursor(c);
+
+    	
+    	if (c.moveToFirst()) {
+            do {
+               Toast.makeText(reflections.this, c.getString(0) + " " + c.getString(1) + " " + c.getString(2), Toast.LENGTH_SHORT).show();
+            } while (c.moveToNext());
+         }
+         if (c != null && !c.isClosed()) {
+            c.close();
+         }
+    	
+    	
     }
     
 }
