@@ -11,6 +11,9 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.RatingBar.OnRatingBarChangeListener;
+import android.view.Menu;
+import android.view.MenuItem;
+
 
 class Question {
 	
@@ -53,6 +56,8 @@ public class reflections extends Activity {
 	 */
 	int currentQuestion = -1;
 	Question[] questions;
+	private ReflectionsDbAdapter mDbHelper;
+	public static final int INSERT_ID = Menu.FIRST;
 	
 	public void showNextQuestion(){
 		
@@ -144,6 +149,9 @@ public class reflections extends Activity {
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
     	
+    	mDbHelper = new ReflectionsDbAdapter(this);
+        mDbHelper.open();
+    	
     	// setup a basic array
     	
     	questions = new Question[] { 
@@ -161,6 +169,22 @@ public class reflections extends Activity {
         
     }
     
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        boolean result = super.onCreateOptionsMenu(menu);
+        menu.add(0, INSERT_ID, 0, R.string.menu_insert);
+        return result;
+    }
     
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case INSERT_ID:
+        	Toast.makeText(reflections.this, "You have clicked the menu  button - good on you", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+       
+        return super.onOptionsItemSelected(item);
+    }
     
 }
