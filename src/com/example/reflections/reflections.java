@@ -135,11 +135,30 @@ public class reflections extends Activity {
     	// setup a basic array
     	
     	quotes = new Quote[] { 
-    			new Quote("What did I do well today?",1), 
-    			new Quote("What can I do better?",1),
-    			new Quote("What actions came from want of praise?",1),
-    			new Quote("Rejection?",1)
-    	};
+    			new Quote("The Master was allergic to ideologies. \n\n'In a war of ideas' he said, 'it is people who are the casualties.' \n\n Later he elaborated: 'People kill for money or for power. But the most ruthless murderers are those who kill for their ideas.'",1), 
+    			new Quote("'When you speak about Reality,' said the Master, 'you are attempting to put the Inexpressible into words, so your words are certain to be misunderstood. Thus people who read that expression of Reality called the Scriptures become stupid and cruel for they follow, not their common sense, but what they think their Scriptures say.' \n\n He had the perfect parable to show this: \n A village blacksmith found an apprentice willing to work hard at low pay. The smith immediately began his instructions to the lad: 'When I take the metal out of the fire, I'll lay it on the anvil; and when I nod my head you hit it with the hammer.' The apprentice did precisely what he thought he was told. Next day he was the village blacksmith",1),
+    			new Quote("'What is the secret of your serenity? \n\nSaid the Master 'Wholehearted cooperation with the inevitable.'",1),
+    			new Quote("''Name one practical, down-to-earth effect of spirituality,' said the skeptic who was ready for an argument. \n 'Here's one,' said the Master. 'When someone offends you, you can raise your spirits to heights where offenses cannot reach.''",1),
+    			new Quote("The Master once referred to the Hindu notion that all creation is 'leela' — God's play — and the universe is his playground. The aim of spirituality, he claimed, is to make all life play.\n This seemed too frivolous for a puritanical visitor. 'Is their no room then for work?'\n 'Of course there is. But work becomes spiritual only when it is transformed into play.'",1),
+    			new Quote("'What is my identity?'\n 'Nothing,' said the Master.\n 'You mean that I am an emptiness and a void?' said the incredulous disciple.\n 'Nothing that can be labeled.' said the Master. \n",1),
+    			new Quote("The master enjoined not austerity, but moderation. If we truly enjoyed things, he claimed, we would be spontaneously moderate. Asked why he was so opposed to ascetical practices, he replied, 'Because they produce pleasure-haters who always become people-haters — rigid and cruel.'",1),
+    			new Quote("",1),
+    			new Quote("",1),
+    			new Quote("",1),
+    			new Quote("",1),
+    			new Quote("",1),
+    			new Quote("",1),
+    			new Quote("",1),
+    			new Quote("",1),
+    			new Quote("",1),
+    			new Quote("",1),
+    			new Quote("",1),
+    			new Quote("",1),
+    			new Quote("",1),
+    			new Quote("",1),
+    			new Quote("",1),
+    			new Quote("'Tell me,' said the atheist, 'Is there a God — really?' Said the master, 'If you want me to be perfectly honest with you, I will not answer.' \n\n Later the disciples demanded to know why he had not answered. 'Because the question is unanswerable,' said the Master. 'So you are an atheist?' 'Certainly not. \n\n The atheist makes the mistake of denying that of which nothing may be said... and the theist makes the mistake of affirming it.",1)  
+    		};
     	
     	
     	// do the first quote

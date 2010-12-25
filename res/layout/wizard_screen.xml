@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="horizontal"
+  android:orientation="vertical"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content">
   
@@ -10,15 +10,25 @@
         android:layout_width="wrap_content" 
         android:layout_height="wrap_content" 
         android:text="@string/label_edittext"/>	
+
+
+	<LinearLayout
+	  xmlns:android="http://schemas.android.com/apk/res/android"
+	  android:orientation="horizontal"
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content">
+
 	    
-    <Button android:id="@+id/prev_button_id"
-     android:layout_height="wrap_content"
-     android:layout_width="wrap_content"
-     android:text="@string/previous"/>  
-        
-    <Button android:id="@+id/next_button_id"
-     android:layout_height="wrap_content"
-     android:layout_width="wrap_content"
-     android:text="@string/next"/>  
-  
+	    <Button android:id="@+id/prev_button_id"
+	     android:layout_height="wrap_content"
+	     android:layout_width="wrap_content"
+	     android:text="@string/previous"/>  
+	        
+	    <Button android:id="@+id/next_button_id"
+	     android:layout_height="wrap_content"
+	     android:layout_width="wrap_content"
+	     android:text="@string/next"/>  
+  	</LinearLayout>
+  	
+  	
 </LinearLayout>
