@@ -17,14 +17,14 @@ import android.widget.Toast;
 import android.widget.RatingBar.OnRatingBarChangeListener;
 
 
-class Question {
+class Quote {
 	
-	String  question = "";
+	String  quote = "";
 	int active = 0;
 	
-	Question(String q,int a) {
+	Quote(String q,int a) {
 		
-		question = q;
+		quote = q;
 		active = a;
 		
 	}
@@ -35,7 +35,7 @@ class Question {
 
 public class reflections extends Activity {
 	
-	/* List of questions to ask */
+	/* List of quotes to ask */
 	/*
 	 * Good thing to do again
 	 * Thing to improve
@@ -58,35 +58,35 @@ public class reflections extends Activity {
 	 * What surprised me today
 	 * 
 	 */
-	int currentQuestion = -1;
-	Question[] questions;
+	int currentQuote = -1;
+	Quote[] quotes;
 	
 	private ReflectionsDbAdapter mDbHelper;
 	public static final int INSERT_ID = Menu.FIRST;
 	
-	public void showNextQuestion(){
+	public void showNextQuote(){
 		
-		if (this.currentQuestion + 1 == questions.length)
+		if (this.currentQuote + 1 == quotes.length)
   			return;
 		
-		this.currentQuestion++;
+		this.currentQuote++;
   		
   		setContentView(R.layout.main);
     	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
     	
-    	labelText.setText(questions[this.currentQuestion].question);	
+    	labelText.setText(quotes[this.currentQuote].quote);	
 
     	this.setupTriggers();
     	
 	}
 	
-	public void showPrevQuestion(){
+	public void showPrevQuote(){
 		
-		if (this.currentQuestion == 0) 
+		if (this.currentQuote == 0) 
     		return;
 		
-		this.currentQuestion = this.currentQuestion - 1 ;
+		this.currentQuote = this.currentQuote - 1 ;
     	
     	
 		
@@ -94,7 +94,7 @@ public class reflections extends Activity {
     	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
     	
-    	labelText.setText(questions[this.currentQuestion].question);	
+    	labelText.setText(quotes[this.currentQuote].quote);	
 	
     	this.setupTriggers();
     	
@@ -102,36 +102,13 @@ public class reflections extends Activity {
 	
 	public void setupTriggers() {
 		
-		/* Do something when text is entered */
-        final EditText edittext = (EditText) findViewById(R.id.edittext);
-        edittext.setOnKeyListener(new OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                    (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                  // Perform action on key press
-                  Toast.makeText(reflections.this, edittext.getText(), Toast.LENGTH_SHORT).show();
-                  return true;
-                }
-                return false;
-            }
-        });
-        
-        /* DO something when the rating has been set */
-        final RatingBar ratingbar = (RatingBar) findViewById(R.id.ratingbar);
-        ratingbar.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                Toast.makeText(reflections.this, "New Rating: " + rating, Toast.LENGTH_SHORT).show();
-            }
-        });
-        
         /* button to go to the previous view */
         final Button buttonPrev = (Button) findViewById(R.id.prev_button_id);
         buttonPrev.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-            	Toast.makeText(reflections.this, "You have clicked the previous button - good on you", Toast.LENGTH_SHORT).show();
-            	reflections.this.showPrevQuestion();
+            	// Toast.makeText(reflections.this, "You have clicked the previous button - good on you", Toast.LENGTH_SHORT).show();
+            	reflections.this.showPrevQuote();
             }
         });        
         
@@ -140,8 +117,8 @@ public class reflections extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-            	Toast.makeText(reflections.this, "You have clicked the next button - good on you", Toast.LENGTH_SHORT).show();
-            	reflections.this.showNextQuestion();
+            	// Toast.makeText(reflections.this, "You have clicked the next button - good on you", Toast.LENGTH_SHORT).show();
+            	reflections.this.showNextQuote();
             }
         });		
 		
@@ -157,16 +134,16 @@ public class reflections extends Activity {
     	
     	// setup a basic array
     	
-    	questions = new Question[] { 
-    			new Question("What did I do well at today?",1), 
-    			new Question("What can I do better?",1),
-    			new Question("What actions came from want of praise?",1),
-    			new Question("Rejection?",1)
+    	quotes = new Quote[] { 
+    			new Quote("What did I do well today?",1), 
+    			new Quote("What can I do better?",1),
+    			new Quote("What actions came from want of praise?",1),
+    			new Quote("Rejection?",1)
     	};
     	
     	
-    	// do the first question
-    	this.showNextQuestion();
+    	// do the first quote
+    	this.showNextQuote();
         
         
         
@@ -179,36 +156,9 @@ public class reflections extends Activity {
         return result;
     }
     
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        case INSERT_ID:
-        	saveResponse();
-            return true;
-        }
-       
-        return super.onOptionsItemSelected(item);
-    }
-    
-    
-    public void saveResponse(){
-    	
-    	mDbHelper.createResponse("20101220", "What do I do well today", "Took Zane to the Planetarium", 4);
-    	
-    	Cursor c = mDbHelper.fetchAllResponses();
-    	startManagingCursor(c);
 
-    	
-    	if (c.moveToFirst()) {
-            do {
-               Toast.makeText(reflections.this, c.getString(0) + " " + c.getString(1) + " " + c.getString(2), Toast.LENGTH_SHORT).show();
-            } while (c.moveToNext());
-         }
-         if (c != null && !c.isClosed()) {
-            c.close();
-         }
-    	
-    	
-    }
+    
+    
+    
     
 }

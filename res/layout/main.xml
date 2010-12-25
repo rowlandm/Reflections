@@ -3,20 +3,6 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-    
-	/* OK , I need a date field */
-	<TextView 
-        android:id="@+id/label_editdate"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-        android:text="@string/label_editdate"/>	
-	
-	
-    <EditText android:id="@+id/editdate"
-        android:layout_height="wrap_content"
-        android:layout_width="160dip"
-        android:inputType="textAutoCorrect|textCapSentences|textMultiLine"
-        android:maxLength="400"/>
 	
 	<include android:id="@+id/cell1" layout="@layout/wizard_screen" />
 	

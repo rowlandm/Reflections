@@ -37,7 +37,7 @@ import android.util.Log;
 public class ReflectionsDbAdapter {
 
     public static final String KEY_DATE = "response_date";
-    public static final String KEY_QUESTION = "question";
+    public static final String KEY_Quote = "quote";
     public static final String KEY_RESPONSE = "response";
     public static final String KEY_RATING = "rating";
     public static final String KEY_ROWID = "_id";
@@ -51,7 +51,7 @@ public class ReflectionsDbAdapter {
      */
     private static final String DATABASE_CREATE =
         "create table responses (_id integer primary key autoincrement, "
-        + "response_date text not null, question text not null, response text null,  rating integer null );";
+        + "response_date text not null, quote text not null, response text null,  rating integer null );";
 
     private static final String DATABASE_NAME = "reflections";
     private static final String DATABASE_TABLE = "responses";
@@ -119,10 +119,10 @@ public class ReflectionsDbAdapter {
      * @param body the body of the note
      * @return rowId or -1 if failed
      */
-    public long createResponse(String response_date, String question, String response, int rating ) {
+    public long createResponse(String response_date, String quote, String response, int rating ) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_DATE, response_date);
-        initialValues.put(KEY_QUESTION, question);
+        initialValues.put(KEY_Quote, quote);
         initialValues.put(KEY_RESPONSE, response);
         initialValues.put(KEY_RATING, rating);
 
@@ -148,7 +148,7 @@ public class ReflectionsDbAdapter {
     public Cursor fetchAllResponses() {
 
         return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_DATE,
-        		KEY_QUESTION,KEY_RESPONSE,KEY_RATING}, null, null, null, null, null);
+        		KEY_Quote,KEY_RESPONSE,KEY_RATING}, null, null, null, null, null);
     }
 
     /**
@@ -163,7 +163,7 @@ public class ReflectionsDbAdapter {
         Cursor mCursor =
 
             mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID, KEY_DATE,
-            		KEY_QUESTION,KEY_RESPONSE,KEY_RATING}, KEY_ROWID + "=" + rowId, null,
+            		KEY_Quote,KEY_RESPONSE,KEY_RATING}, KEY_ROWID + "=" + rowId, null,
                     null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -182,10 +182,10 @@ public class ReflectionsDbAdapter {
      * @param body value to set note body to
      * @return true if the note was successfully updated, false otherwise
      */
-    public boolean updateResponse(long rowId, String response_date, String question, String response, int rating ) {
+    public boolean updateResponse(long rowId, String response_date, String quote, String response, int rating ) {
         ContentValues args = new ContentValues();
         args.put(KEY_DATE, response_date);
-        args.put(KEY_QUESTION, question);
+        args.put(KEY_Quote, quote);
         args.put(KEY_RESPONSE, response);
         args.put(KEY_RATING, rating);
         return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
