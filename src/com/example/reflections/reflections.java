@@ -15,7 +15,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.RatingBar.OnRatingBarChangeListener;
-
+import java.util.Random;
 
 class Quote {
 	
@@ -35,34 +35,27 @@ class Quote {
 
 public class reflections extends Activity {
 	
-	/* List of quotes to ask */
-	/*
-	 * Good thing to do again
-	 * Thing to improve
-	 * Actions that stemmed from want of praise
-	 * Something new learned
-	 * Spiritual
-	 * Imagine if I didn't worry about....
-	 * Romance
-	 * What really annoyed me for no good reason
-	 * Rejection
-	 * Rescuer, Victim and Persecutor
-	 * Good things I did today
-	 * Good things she did
-	 * Was I harsh on myself?
-	 * What did I say I would do?
-	 * Organise for tomorrow
-	 * What did I do to improve my health
-	 * Update Resume
-	 * Interesting website
-	 * What surprised me today
-	 * 
-	 */
 	int currentQuote = -1;
 	Quote[] quotes;
 	
-	private ReflectionsDbAdapter mDbHelper;
 	public static final int INSERT_ID = Menu.FIRST;
+	
+	
+	public void showRandomQuote(){
+		
+		final Random myRandom = new Random();
+		
+		this.currentQuote = myRandom.nextInt(quotes.length);
+		
+		setContentView(R.layout.main);
+    	
+    	TextView labelText = (TextView) findViewById(R.id.label_edittext);
+    	
+    	labelText.setText(quotes[this.currentQuote].quote);	
+
+    	this.setupTriggers();
+    	
+	}
 	
 	public void showNextQuote(){
 		
@@ -122,15 +115,22 @@ public class reflections extends Activity {
             }
         });		
 		
+        /* button to go to the next random view */
+        final Button buttonRandom = (Button) findViewById(R.id.random_button_id);
+        buttonRandom.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            	// Toast.makeText(reflections.this, "You have clicked the next button - good on you", Toast.LENGTH_SHORT).show();
+            	reflections.this.showRandomQuote();
+            }
+        });		
+		
 		
 	}
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
-    	
-    	mDbHelper = new ReflectionsDbAdapter(this);
-        mDbHelper.open();
     	
     	// setup a basic array
     	
