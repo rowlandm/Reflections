@@ -14,14 +14,14 @@ public final class R {
         public static final int icon=0x7f020000;
     }
     public static final class id {
-        public static final int ScrollView01=0x7f050006;
+        public static final int ScrollView01=0x7f050004;
         public static final int about_us_text=0x7f050000;
         public static final int back_button_id=0x7f050002;
         public static final int cell1=0x7f050003;
         public static final int label_edittext=0x7f050007;
-        public static final int next_button_id=0x7f050005;
+        public static final int next_button_id=0x7f050006;
         public static final int next_button_id_bottom=0x7f05000a;
-        public static final int prev_button_id=0x7f050004;
+        public static final int prev_button_id=0x7f050005;
         public static final int prev_button_id_bottom=0x7f050008;
         public static final int random_button_id=0x7f050001;
         public static final int random_button_id_bottom=0x7f050009;

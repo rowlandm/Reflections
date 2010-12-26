@@ -11,6 +11,7 @@ import android.view.View.OnKeyListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.ScrollView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -74,7 +75,13 @@ public class reflections extends Activity {
 
     	DisplayMetrics dm = new DisplayMetrics(); 
     	getWindowManager().getDefaultDisplay().getMetrics(dm); 
-    	int sixtyPercentScreenWidth = (int) Math.round(dm.widthPixels * 0.6);
+    	int screenHeight = (int) dm.heightPixels;
+    	
+    	// Toast.makeText(reflections.this, "Screen height: " + Math.round(((screenHeight + 30)/3)), Toast.LENGTH_SHORT).show();
+
+    	final ScrollView scrollView01 = (ScrollView) findViewById(R.id.ScrollView01);
+    	
+    	//scrollView01.layout_height = Math.round(((screenHeight + 30)/3)) + "px";
     	
     	
     	
@@ -211,7 +218,7 @@ public class reflections extends Activity {
     	
     	// setup a basic array
     	
-    	quotes = new Quote[] { 
+    	quotes = new Quote[] {
     			new Quote("The Master was allergic to ideologies. \n\n'In a war of ideas' he said, 'it is people who are the casualties.' \n\nLater he elaborated: 'People kill for money or for power. But the most ruthless murderers are those who kill for their ideas.'",1), 
     			new Quote("'When you speak about Reality,' said the Master, 'you are attempting to put the Inexpressible into words, so your words are certain to be misunderstood. Thus people who read that expression of Reality called the Scriptures become stupid and cruel for they follow, not their common sense, but what they think their Scriptures say.' \n\nHe had the perfect parable to show this: \n\nA village blacksmith found an apprentice willing to work hard at low pay. The smith immediately began his instructions to the lad: 'When I take the metal out of the fire, I'll lay it on the anvil; and when I nod my head you hit it with the hammer.' The apprentice did precisely what he thought he was told. Next day he was the village blacksmith",1),
     			new Quote("'What is the secret of your serenity? \n\nSaid the Master 'Wholehearted cooperation with the inevitable.'",1),
