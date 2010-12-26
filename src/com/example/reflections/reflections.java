@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
-// import android.widget.Toast;
+import android.widget.Toast;
 import java.util.Random;
 import android.util.DisplayMetrics;
 
@@ -27,7 +27,11 @@ class Quote {
 	
 }
 
-
+class savedState {
+	
+	int quote = -1;
+	
+}
 
 public class reflections extends Activity {
 	
@@ -43,7 +47,16 @@ public class reflections extends Activity {
 		
 		this.currentQuote = myRandom.nextInt(quotes.length);
 		
-		setContentView(R.layout.main);
+		DisplayMetrics dm = new DisplayMetrics(); 
+    	getWindowManager().getDefaultDisplay().getMetrics(dm); 
+    	int screenHeight = (int) dm.heightPixels;
+    	int screenWidth = (int) dm.widthPixels;
+    	
+    	if (screenHeight > screenWidth){
+    		setContentView(R.layout.main_portrait);
+    	} else {
+    		setContentView(R.layout.main);
+    	}
     	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
     	
@@ -60,22 +73,20 @@ public class reflections extends Activity {
 		
 		this.currentQuote++;
   		
-  		setContentView(R.layout.main);
+		DisplayMetrics dm = new DisplayMetrics(); 
+    	getWindowManager().getDefaultDisplay().getMetrics(dm); 
+    	int screenHeight = (int) dm.heightPixels;
+    	int screenWidth = (int) dm.widthPixels;
+    	
+    	if (screenHeight > screenWidth){
+    		setContentView(R.layout.main_portrait);
+    	} else {
+    		setContentView(R.layout.main);
+    	}
     	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
     	
     	labelText.setText(quotes[this.currentQuote].quote);	
-
-    	/* DisplayMetrics dm = new DisplayMetrics(); 
-    	getWindowManager().getDefaultDisplay().getMetrics(dm); 
-    	int screenHeight = (int) dm.heightPixels; 
-    	
-    	Toast.makeText(reflections.this, "Screen height: " + Math.round(((screenHeight + 30)/3)), Toast.LENGTH_SHORT).show();
-
-    	final ScrollView scrollView01 = (ScrollView) findViewById(R.id.ScrollView01);
-    	
-    	scrollView01.layout_height = Math.round(((screenHeight + 30)/3)) + "px"; */
-    	
     	
     	
     	this.setupTriggers("All");
@@ -90,8 +101,17 @@ public class reflections extends Activity {
 		this.currentQuote = this.currentQuote - 1 ;
     	
     	
-		
-		setContentView(R.layout.main);
+		DisplayMetrics dm = new DisplayMetrics(); 
+    	getWindowManager().getDefaultDisplay().getMetrics(dm); 
+    	int screenHeight = (int) dm.heightPixels;
+    	int screenWidth = (int) dm.widthPixels;
+    	
+    	if (screenHeight > screenWidth){
+    		setContentView(R.layout.main_portrait);
+    	} else {
+    		setContentView(R.layout.main);
+    	}
+
     	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
     	
@@ -103,7 +123,17 @@ public class reflections extends Activity {
 	
 	public void showCurrentQuote(){
 		
-		setContentView(R.layout.main);
+		DisplayMetrics dm = new DisplayMetrics(); 
+    	getWindowManager().getDefaultDisplay().getMetrics(dm); 
+    	int screenHeight = (int) dm.heightPixels;
+    	int screenWidth = (int) dm.widthPixels;
+    	
+    	if (screenHeight > screenWidth){
+    		setContentView(R.layout.main_portrait);
+    	} else {
+    		setContentView(R.layout.main);
+    	}
+
     	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
     	
@@ -204,10 +234,25 @@ public class reflections extends Activity {
 		}
 		
 	}
-    /** Called when the activity is first created. */
+	
+	@Override
+	public Object onRetainNonConfigurationInstance() {
+		
+		int currentQuote = this.currentQuote;
+		
+		final savedState currentState = new savedState();
+		
+		currentState.quote = this.currentQuote;
+		
+	    return currentState;
+	}
+	
+    /** Called when the activity is first created or when application changes orientation */
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
+    	
+    
     	
     	// setup a basic array
     	
@@ -243,9 +288,23 @@ public class reflections extends Activity {
     		};
     	
     	
-    	// do the first quote
-    	this.showNextQuote();
+    	
+    	final Object data = getLastNonConfigurationInstance();
         
+        // The activity is starting for the first time, load the photos from Flickr
+        if (data == null) {
+        	// do the first quote
+        	this.showNextQuote();
+            
+        } else {
+        	final savedState state = (savedState) data;
+        	
+        	this.currentQuote = state.quote; 
+        	
+        	this.showCurrentQuote();
+        }
+    	
+    	
         
         
     }
