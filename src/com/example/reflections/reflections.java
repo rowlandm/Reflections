@@ -1,21 +1,14 @@
 package com.example.reflections;
 
 import android.app.Activity;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnKeyListener;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RatingBar;
 import android.widget.ScrollView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.RatingBar.OnRatingBarChangeListener;
+// import android.widget.Toast;
 import java.util.Random;
 import android.util.DisplayMetrics;
 
@@ -73,15 +66,15 @@ public class reflections extends Activity {
     	
     	labelText.setText(quotes[this.currentQuote].quote);	
 
-    	DisplayMetrics dm = new DisplayMetrics(); 
+    	/* DisplayMetrics dm = new DisplayMetrics(); 
     	getWindowManager().getDefaultDisplay().getMetrics(dm); 
-    	int screenHeight = (int) dm.heightPixels;
+    	int screenHeight = (int) dm.heightPixels; 
     	
-    	// Toast.makeText(reflections.this, "Screen height: " + Math.round(((screenHeight + 30)/3)), Toast.LENGTH_SHORT).show();
+    	Toast.makeText(reflections.this, "Screen height: " + Math.round(((screenHeight + 30)/3)), Toast.LENGTH_SHORT).show();
 
     	final ScrollView scrollView01 = (ScrollView) findViewById(R.id.ScrollView01);
     	
-    	//scrollView01.layout_height = Math.round(((screenHeight + 30)/3)) + "px";
+    	scrollView01.layout_height = Math.round(((screenHeight + 30)/3)) + "px"; */
     	
     	
     	
