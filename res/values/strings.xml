@@ -6,6 +6,7 @@
 <string name="label_edittext">Message</string>
 <string name="label_editdate">Date</string>
 <string name="previous">Previous</string>
-<string name="menu_insert">Save Response</string>
+<string name="menu_insert_about">About</string>
 <string name="random">Random</string>
+<string name="about_us_text">Written by Rowland Mosbergen and with quotes from Anthony De Mello\'s One Minute Wisdom, One Minute Nonsense and my own personal quotes. \n\n In dedication to Zane, just in case I cannot explain them myself to you...</string>
 </resources>
