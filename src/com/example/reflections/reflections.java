@@ -30,18 +30,23 @@ class Quote {
 class savedState {
 	
 	int quote = -1;
+	boolean inAboutUsMenu = false;
 	
 }
 
 public class reflections extends Activity {
 	
 	int currentQuote = -1;
+	boolean inAboutUsMenu = false;
+	
 	Quote[] quotes;
 	
 	public static final int INSERT_ID = Menu.FIRST;
 	
 	
 	public void showRandomQuote(){
+		
+		this.inAboutUsMenu = false;
 		
 		final Random myRandom = new Random();
 		
@@ -67,6 +72,8 @@ public class reflections extends Activity {
 	}
 	
 	public void showNextQuote(){
+		
+		this.inAboutUsMenu = false;
 		
 		if (this.currentQuote + 1 == quotes.length)
   			return;
@@ -94,6 +101,8 @@ public class reflections extends Activity {
 	}
 	
 	public void showPrevQuote(){
+		
+		this.inAboutUsMenu = false;
 		
 		if (this.currentQuote == 0) 
     		return;
@@ -123,6 +132,8 @@ public class reflections extends Activity {
 	
 	public void showCurrentQuote(){
 		
+		this.inAboutUsMenu = false;
+		
 		DisplayMetrics dm = new DisplayMetrics(); 
     	getWindowManager().getDefaultDisplay().getMetrics(dm); 
     	int screenHeight = (int) dm.heightPixels;
@@ -145,7 +156,7 @@ public class reflections extends Activity {
 	
 	public void showAboutUs(){
 		
-		
+		this.inAboutUsMenu = true;
 		setContentView(R.layout.about_us);
 		this.setupTriggers("Random");
     	
@@ -243,6 +254,7 @@ public class reflections extends Activity {
 		final savedState currentState = new savedState();
 		
 		currentState.quote = this.currentQuote;
+		currentState.inAboutUsMenu = this.inAboutUsMenu;
 		
 	    return currentState;
 	}
@@ -260,7 +272,7 @@ public class reflections extends Activity {
     			new Quote("The Master was allergic to ideologies. \n\n'In a war of ideas' he said, 'it is people who are the casualties.' \n\nLater he elaborated: 'People kill for money or for power. But the most ruthless murderers are those who kill for their ideas.\n\n -- Anthony De Mello, One Minute Nonsense",1),
     			// new Quote("",1),
     			new Quote("To be a good person you have to think bad thoughts but choose not to follow through with the associated action. A person who does not think bad thoughts is merely innocent or naive.",1),
-    			new Quote("There are 4 steps to committing an atrocity:\n\n1/ You have to label yourself\n\n2/ You label other people as not like you - 'outsiders'\n\n3/ You start to forget that these 'outsiders' are human beings as well - just like you... And you forget that you would be horrified if something like this was going to happen to your family. \n\nA lot of people stop at this step. They might not actively participate but would accept that this is just.\n\n4/ The atrocity happens, perpetuated by people who are so strong in their beliefs and labelling that they can wipe away the simple fact that all people are human beings. It's funny, kind of, that if the 'outsider' did this atrocity to you and your family then justice would be on your side to stop them from doing it again.\n\n\nHow do you stop this? It's very easy and very hard. You have to remove the labels from yourself. That's very difficult...",1),
+    			//new Quote("There are 4 steps to committing an atrocity:\n\n1/ You have to label yourself\n\n2/ You label other people as not like you - 'outsiders'\n\n3/ You start to forget that these 'outsiders' are human beings as well - just like you... And you forget that you would be horrified if something like this was going to happen to your family. \n\nA lot of people stop at this step. They might not actively participate but would accept that this is just.\n\n4/ The atrocity happens, perpetuated by people who are so strong in their beliefs and labelling that they can wipe away the simple fact that all people are human beings. It's funny, kind of, that if the 'outsider' did this atrocity to you and your family then justice would be on your side to stop them from doing it again.\n\n\nHow do you stop this? It's very easy and very hard. You have to remove the labels from yourself. That's very difficult...",1),
     			new Quote("'When you speak about Reality,' said the Master, 'you are attempting to put the Inexpressible into words, so your words are certain to be misunderstood. Thus people who read that expression of Reality called the Scriptures become stupid and cruel for they follow, not their common sense, but what they think their Scriptures say.' \n\nHe had the perfect parable to show this: \n\nA village blacksmith found an apprentice willing to work hard at low pay. The smith immediately began his instructions to the lad: 'When I take the metal out of the fire, I'll lay it on the anvil; and when I nod my head you hit it with the hammer.' The apprentice did precisely what he thought he was told. Next day he was the village blacksmith\n\n -- Anthony De Mello, One Minute Nonsense",1),
     			new Quote("'What is the secret of your serenity? \n\nSaid the Master 'Wholehearted cooperation with the inevitable.'\n\n -- Anthony De Mello, One Minute Nonsense",1),
     			new Quote("'Name one practical, down-to-earth effect of spirituality,' said the skeptic who was ready for an argument. \n\n'Here's one,' said the Master. 'When someone offends you, you can raise your spirits to heights where offenses cannot reach.'\n\n -- Anthony De Mello, One Minute Nonsense",1),
@@ -315,8 +327,11 @@ public class reflections extends Activity {
         	final savedState state = (savedState) data;
         	
         	this.currentQuote = state.quote; 
-        	
-        	this.showCurrentQuote();
+        	if (state.inAboutUsMenu){
+        		this.showAboutUs();
+        	} else {
+        		this.showCurrentQuote();
+        	}
         }
     	
     	
