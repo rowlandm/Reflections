@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="mediumText" parent="@android:style/TextAppearance.Medium">
+		<item name="android:textColor">#FFFFFF</item>
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item> 
+	</style>
+	
+	<style name="smallText" parent="@android:style/TextAppearance.Small">
+		<item name="android:textColor">#FFFFFF</item>
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item> 
+	</style>
+	
+	<style name="largeText" parent="@android:style/TextAppearance.Large">
+		<item name="android:textColor">#FFFFFF</item>
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item> 
+	</style>
+</resources>

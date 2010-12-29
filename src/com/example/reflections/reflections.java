@@ -13,6 +13,22 @@ import java.util.Random;
 import android.util.DisplayMetrics;
 
 
+class FontSize {
+	
+	int small = 10;
+	int medium = 14;
+	int large = 18;
+	int current = 14;
+	
+	public void setCurrent(int currentValue) {
+		this.current = currentValue;
+	}
+	
+	public int getCurrent() {
+		return this.current;
+	}
+}
+
 class Quote {
 	
 	String  quote = "";
@@ -39,9 +55,12 @@ public class reflections extends Activity {
 	int currentQuote = -1;
 	boolean inAboutUsMenu = false;
 	
+	FontSize fontSize = new FontSize();
+	
 	Quote[] quotes;
 	
 	public static final int INSERT_ID = Menu.FIRST;
+	
 	
 	
 	public void showRandomQuote(){
@@ -66,7 +85,8 @@ public class reflections extends Activity {
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
     	
     	labelText.setText(quotes[this.currentQuote].quote);	
-
+    	labelText.setTextSize(this.fontSize.getCurrent());
+    	
     	this.setupTriggers("All");
     	
 	}
@@ -95,6 +115,7 @@ public class reflections extends Activity {
     	
     	labelText.setText(quotes[this.currentQuote].quote);	
     	
+    	labelText.setTextSize(this.fontSize.getCurrent());
     	
     	this.setupTriggers("All");
     	
@@ -125,7 +146,7 @@ public class reflections extends Activity {
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
     	
     	labelText.setText(quotes[this.currentQuote].quote);	
-	
+    	labelText.setTextSize(this.fontSize.getCurrent());
     	this.setupTriggers("All");
     	
 	}	
@@ -149,7 +170,8 @@ public class reflections extends Activity {
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
     	
     	labelText.setText(quotes[this.currentQuote].quote);	
-	
+    	labelText.setTextSize(this.fontSize.getCurrent());
+    	
     	this.setupTriggers("All");
     	
 	}
@@ -158,7 +180,13 @@ public class reflections extends Activity {
 		
 		this.inAboutUsMenu = true;
 		setContentView(R.layout.about_us);
-		this.setupTriggers("Random");
+		
+		TextView aboutUsText = (TextView) findViewById(R.id.about_us_text);
+		
+		aboutUsText.setTextSize(this.fontSize.getCurrent());
+    	
+    	this.setupTriggers("Random");
+		
     	
 	}	
 	
@@ -253,7 +281,7 @@ public class reflections extends Activity {
 		
 		final savedState currentState = new savedState();
 		
-		currentState.quote = this.currentQuote;
+    	currentState.quote = this.currentQuote;
 		currentState.inAboutUsMenu = this.inAboutUsMenu;
 		
 	    return currentState;
@@ -262,8 +290,8 @@ public class reflections extends Activity {
     /** Called when the activity is first created or when application changes orientation */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-    	super.onCreate(savedInstanceState);
     	
+    	super.onCreate(savedInstanceState);
     
     	
     	// setup a basic array
@@ -311,6 +339,11 @@ public class reflections extends Activity {
     			new Quote("Make a decision when you are calm, composed and know what your long term goals are. It may not always be the right decision but it will be the best you can do at the time. \n\nRemember to review your decisions regularly too. A former bad decision can be made worse if it's not recognised and changed.",1),
     			new Quote("Recognising you are going to die isn't being pessimistic, it is being realistic.\n\nMost people try to avoid this - but eventually they have to face it all at once with the death of a loved one or their own mortality.",1),
     			new Quote("The real test of a holy book is to read it out in it's entirety to it's believers without their knowlege of who wrote the book, but change the words to say the exact opposite.  If the believers think this 'new' book is good, then it probably is.",1),
+    			new Quote("If you are courageous enough to risk everything for being alert and aware, enlightenment is going to happen. \n\n -- Buddha, Buddha his life and teachings by Osho ",1),
+    			new Quote("Belief as such is the barrier; it does not matter what belief is, true or false. \n\n -- Buddha, Buddha his life and teachings by Osho",1),
+    			new Quote("The difference between belief and opinion is that opinion is more open to new information. Belief makes the mind more closed to ideas that lie beyond the belief.\n\nOpinion should change on evidence that is presented whereas belief does not, as belief is based on faith.\n\nA strong opinion that cannot be swayed with logic is not opinion at all but a form of belief.",1),
+    			new Quote("Surely it is better to release anger and frustration in healthy, appropriate doses when the situation is still current than to bottle them up and release them all at once at an inappropriate time and place.",1),
+    			// new Quote("",1),
     			new Quote("'Tell me,' said the atheist, 'Is there a God — really?' Said the master, 'If you want me to be perfectly honest with you, I will not answer.' \n\nLater the disciples demanded to know why he had not answered. 'Because the question is unanswerable,' said the Master. 'So you are an atheist?' 'Certainly not. \n\nThe atheist makes the mistake of denying that of which nothing may be said... and the theist makes the mistake of affirming it.\n\n -- Anthony De Mello, One Minute Nonsense",1)  
     		};
     	
@@ -343,13 +376,25 @@ public class reflections extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         boolean result = super.onCreateOptionsMenu(menu);
         menu.add(0, INSERT_ID, 0, R.string.menu_insert_about);
+        menu.add(0, INSERT_ID + 1, 0, R.string.menu_insert_change_font_size);
         return result;
     }
     
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
-        reflections.this.showAboutUs();
+    	switch (item.getItemId()) {
+    	
+    		case 1:
+    			reflections.this.showAboutUs();
+    			return true;
+    		case 2:
+    			Toast.makeText(reflections.this, "The item chosen is " + item + item.getItemId(), Toast.LENGTH_SHORT).show();
+    			return true;
+    	
+    	}
+    	
+    	
         return true;
     }
     
