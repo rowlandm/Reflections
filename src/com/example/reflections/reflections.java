@@ -82,6 +82,24 @@ public class reflections extends Activity {
     		setContentView(R.layout.main);
     	}
     	
+    	// hide next button if this is the end
+    	if (this.currentQuote + 1 == quotes.length){
+	    	final Button button = (Button) findViewById(R.id.next_button_id);
+	        button.setVisibility(View.GONE);		
+	        
+	        final Button buttonNextBottom = (Button) findViewById(R.id.next_button_id_bottom);
+	        buttonNextBottom.setVisibility(View.GONE);
+    	}
+    	
+    	// hide prev button if this is the start
+    	if (this.currentQuote == 0){
+	    	final Button button = (Button) findViewById(R.id.prev_button_id);
+	        button.setVisibility(View.GONE);		
+	        
+	        final Button buttonPrevBottom = (Button) findViewById(R.id.prev_button_id_bottom);
+	        buttonPrevBottom.setVisibility(View.GONE);
+    	}
+    	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
     	
     	labelText.setText(quotes[this.currentQuote].quote);	
@@ -109,6 +127,24 @@ public class reflections extends Activity {
     		setContentView(R.layout.main_portrait);
     	} else {
     		setContentView(R.layout.main);
+    	}
+    	
+    	// hide next button if this is the end
+    	if (this.currentQuote + 1 == quotes.length){
+	    	final Button button = (Button) findViewById(R.id.next_button_id);
+	        button.setVisibility(View.GONE);		
+	        
+	        final Button buttonNextBottom = (Button) findViewById(R.id.next_button_id_bottom);
+	        buttonNextBottom.setVisibility(View.GONE);
+    	}
+    	
+    	// hide prev button if this is the start
+    	if (this.currentQuote == 0){
+	    	final Button button = (Button) findViewById(R.id.prev_button_id);
+	        button.setVisibility(View.GONE);		
+	        
+	        final Button buttonPrevBottom = (Button) findViewById(R.id.prev_button_id_bottom);
+	        buttonPrevBottom.setVisibility(View.GONE);
     	}
     	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
@@ -141,7 +177,24 @@ public class reflections extends Activity {
     	} else {
     		setContentView(R.layout.main);
     	}
-
+    	
+    	// hide next button if this is the end
+    	if (this.currentQuote + 1 == quotes.length){
+	    	final Button button = (Button) findViewById(R.id.next_button_id);
+	        button.setVisibility(View.GONE);		
+	        
+	        final Button buttonNextBottom = (Button) findViewById(R.id.next_button_id_bottom);
+	        buttonNextBottom.setVisibility(View.GONE);
+    	}
+    	
+    	// hide prev button if this is the start
+    	if (this.currentQuote == 0){
+	    	final Button button = (Button) findViewById(R.id.prev_button_id);
+	        button.setVisibility(View.GONE);		
+	        
+	        final Button buttonPrevBottom = (Button) findViewById(R.id.prev_button_id_bottom);
+	        buttonPrevBottom.setVisibility(View.GONE);
+    	}
     	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
     	
@@ -166,6 +219,23 @@ public class reflections extends Activity {
     		setContentView(R.layout.main);
     	}
 
+    	// hide next button if this is the end
+    	if (this.currentQuote + 1 == quotes.length){
+	    	final Button button = (Button) findViewById(R.id.next_button_id);
+	        button.setVisibility(View.GONE);		
+	        
+	        final Button buttonNextBottom = (Button) findViewById(R.id.next_button_id_bottom);
+	        buttonNextBottom.setVisibility(View.GONE);
+    	}
+    	
+    	// hide prev button if this is the start
+    	if (this.currentQuote == 0){
+	    	final Button button = (Button) findViewById(R.id.prev_button_id);
+	        button.setVisibility(View.GONE);		
+	        
+	        final Button buttonPrevBottom = (Button) findViewById(R.id.prev_button_id_bottom);
+	        buttonPrevBottom.setVisibility(View.GONE);
+    	}
     	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
     	
@@ -298,9 +368,7 @@ public class reflections extends Activity {
     	
     	quotes = new Quote[] {
     			new Quote("The Master was allergic to ideologies. \n\n'In a war of ideas' he said, 'it is people who are the casualties.' \n\nLater he elaborated: 'People kill for money or for power. But the most ruthless murderers are those who kill for their ideas.\n\n -- Anthony De Mello, One Minute Nonsense",1),
-    			// new Quote("",1),
     			new Quote("To be a good person you have to think bad thoughts but choose not to follow through with the associated action. A person who does not think bad thoughts is merely innocent or naive.",1),
-    			//new Quote("There are 4 steps to committing an atrocity:\n\n1/ You have to label yourself\n\n2/ You label other people as not like you - 'outsiders'\n\n3/ You start to forget that these 'outsiders' are human beings as well - just like you... And you forget that you would be horrified if something like this was going to happen to your family. \n\nA lot of people stop at this step. They might not actively participate but would accept that this is just.\n\n4/ The atrocity happens, perpetuated by people who are so strong in their beliefs and labelling that they can wipe away the simple fact that all people are human beings. It's funny, kind of, that if the 'outsider' did this atrocity to you and your family then justice would be on your side to stop them from doing it again.\n\n\nHow do you stop this? It's very easy and very hard. You have to remove the labels from yourself. That's very difficult...",1),
     			new Quote("'When you speak about Reality,' said the Master, 'you are attempting to put the Inexpressible into words, so your words are certain to be misunderstood. Thus people who read that expression of Reality called the Scriptures become stupid and cruel for they follow, not their common sense, but what they think their Scriptures say.' \n\nHe had the perfect parable to show this: \n\nA village blacksmith found an apprentice willing to work hard at low pay. The smith immediately began his instructions to the lad: 'When I take the metal out of the fire, I'll lay it on the anvil; and when I nod my head you hit it with the hammer.' The apprentice did precisely what he thought he was told. Next day he was the village blacksmith\n\n -- Anthony De Mello, One Minute Nonsense",1),
     			new Quote("'What is the secret of your serenity? \n\nSaid the Master 'Wholehearted cooperation with the inevitable.'\n\n -- Anthony De Mello, One Minute Nonsense",1),
     			new Quote("'Name one practical, down-to-earth effect of spirituality,' said the skeptic who was ready for an argument. \n\n'Here's one,' said the Master. 'When someone offends you, you can raise your spirits to heights where offenses cannot reach.'\n\n -- Anthony De Mello, One Minute Nonsense",1),
@@ -343,7 +411,12 @@ public class reflections extends Activity {
     			new Quote("Belief as such is the barrier; it does not matter what belief is, true or false. \n\n -- Buddha, Buddha his life and teachings by Osho",1),
     			new Quote("The difference between belief and opinion is that opinion is more open to new information. Belief makes the mind more closed to ideas that lie beyond the belief.\n\nOpinion should change on evidence that is presented whereas belief does not, as belief is based on faith.\n\nA strong opinion that cannot be swayed with logic is not opinion at all but a form of belief.",1),
     			new Quote("Surely it is better to release anger and frustration in healthy, appropriate doses when the situation is still current than to bottle them up and release them all at once at an inappropriate time and place.",1),
+    			new Quote("'What, concretely, is Enlightenment?'\n\n'Seeing Reality as it is,' said the Master. \n\n'Doesn't everyone see Reality as it is?' \n\n'Oh, no! Most people see it as they think it is.' \n\n'What's the difference?' \n\n'The difference between thinking you are drowning in a stormy sea and knowing you cannot drown because there isn't any water in sight for miles around.' \n\n -- Anthony De Mello, One Minute Nonsense",1),
+    			new Quote("You know you are a Mystic when you wake up one day and ask, am I crazy or are they?\n\n -- Anthony De Mello, One Minute Nonsense",1),
     			// new Quote("",1),
+    			new Quote("One of the hardest things to do is to let go of your desires.  \n\nIt is so easy to fight, to complain, to argue, to hoard.  \n\nBut to let go is like holding onto a precious object tightly for a lifetime. You get nervous and scared that you are going to drop it.\n\nMost people wouldn't realise that if you did drop it then you wouldn't be nervous and scared anymore. And for the people that do realise that letting go is the right thing to do, they have to content with the fact that their arms are so used to holding that precious object so tightly that is very difficult to let go.",1),
+    			new Quote("As you identify less and less with the 'me,' you will be more at ease with everybody and with everything. Do you know why? \n\nBecause you are no longer afraid of being hurt or not liked. You no longer desire to impress anyone. Can you imagine the relief when you don't have to impress anybody anymore? Oh, what a relief. Happiness at last! \n\nYou no longer feel the need or the compulsion to explain things anymore. It's all right. What is there to be explained? And you don't feel the need or compulsion to apologize anymore. \n\nI'd much rather hear you say, 'I've come awake,' than hear you say, 'I'm sorry.' \n\nI'd much rather hear you say to me, 'I've come awake since we last met; what I did to you won't happen again,' than to hear you say, 'I'm so sorry for what I did to you.' \n\nWhy would anyone demand an apology? You have something to explore in that. Even when someone supposedly was mean to you, there is no room for apology. \n\n -- Anthony De Mello, Awareness : The Perils and Oppurtunities of Reality",1),
+    			new Quote("Nobody was mean to you. Somebody was mean to what he or she thought was you, but not to you. Nobody ever rejects you; they're only rejecting what they think you are. But that cuts both ways. \n\nNobody ever accepts you either. Until people come awake, they are simply accepting or rejecting their image of you. They've fashioned an image of you, and they're rejecting or accepting that. \n\nSee how devastating it is to go deeply into that. It's a bit too liberating. \n\nBut how easy it is to love people when you understand this. How easy it is to love everyone when you don't identify with what they imagine you are or they are. It becomes easy to love them, to love everybody. \n\n -- Anthony De Mello, Awareness : The Perils and Oppurtunities of Reality",1),
     			new Quote("'Tell me,' said the atheist, 'Is there a God — really?' Said the master, 'If you want me to be perfectly honest with you, I will not answer.' \n\nLater the disciples demanded to know why he had not answered. 'Because the question is unanswerable,' said the Master. 'So you are an atheist?' 'Certainly not. \n\nThe atheist makes the mistake of denying that of which nothing may be said... and the theist makes the mistake of affirming it.\n\n -- Anthony De Mello, One Minute Nonsense",1)  
     		};
     	
