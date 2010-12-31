@@ -377,6 +377,23 @@ public class reflections extends Activity {
         boolean result = super.onCreateOptionsMenu(menu);
         menu.add(0, INSERT_ID, 0, R.string.menu_insert_about);
         menu.add(0, INSERT_ID + 1, 0, R.string.menu_insert_change_font_size);
+        
+        //Menu fontSizeMenu = menu.addSubMenu(INSERT_ID+1);
+        
+        //fontSizeMenu.add(0,INSERT_ID,0,"Small");
+        //fontSizeMenu.add(0,INSERT_ID+1,0,"Medium");
+        //fontSizeMenu.add(0,INSERT_ID+2,0,"Large");
+        
+        
+        
+         /* <menu">
+        <item android:id="@+id/new"
+              android:title="@string/new" />
+        <item android:id="@+id/open"
+              android:title="@string/open" />
+        </menu> */
+        
+        
         return result;
     }
     
