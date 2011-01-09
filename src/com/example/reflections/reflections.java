@@ -19,11 +19,10 @@ import android.content.DialogInterface;
 
 class FontSize {
 	
-	int small = 10;
-	int medium = 14;
+	int small = 14;
+	int medium = 16;
 	int large = 18;
 	int current = 14;
-	
 	
 	
 	public void setSmall() {
@@ -42,6 +41,26 @@ class FontSize {
 		
 		this.current = value;
 		
+	}
+	
+	public int getOrder(){
+		
+		int currentOrder = 0;
+		switch(this.current){
+			
+		case 14:
+			currentOrder = 0;
+			break;
+		case 16:
+			currentOrder = 1;
+			break;
+		case 18: 
+			currentOrder = 2;
+			break;
+			
+		
+		}
+		return currentOrder;
 	}
 	
 	public int getCurrent() {
@@ -81,6 +100,8 @@ public class reflections extends Activity {
 	
 	public static final int INSERT_ID = Menu.FIRST;
 	static final int DIALOG_CHOOSE_FONT = 0;
+	
+	
 	
 	
 	public void showRandomQuote(){
@@ -292,7 +313,7 @@ public class reflections extends Activity {
 
     		AlertDialog.Builder builder = new AlertDialog.Builder(this);
     		builder.setTitle("Pick a font size");
-    		builder.setItems(items, new DialogInterface.OnClickListener() {
+    		builder.setSingleChoiceItems(items,reflections.this.fontSize.getOrder(), new DialogInterface.OnClickListener() {
     		    public void onClick(DialogInterface dialog, int item) {
     		    	
     		    	//Toast.makeText(getApplicationContext(), item , Toast.LENGTH_SHORT).show();
@@ -317,7 +338,7 @@ public class reflections extends Activity {
     		    	}
     		    	
     		    	reflections.this.showCurrentQuote();
-    		        
+    		        dialog.cancel();
     		    }
     		});
     		alert = builder.create();
@@ -327,6 +348,9 @@ public class reflections extends Activity {
         default:
             alert = null;
         }
+        
+        
+        
         return alert;
     }	
 	
@@ -554,6 +578,7 @@ public class reflections extends Activity {
     			return true;
     		case 2:
     			showDialog(DIALOG_CHOOSE_FONT);
+    			
     			return true;
     	
     	}
