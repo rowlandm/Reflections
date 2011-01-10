@@ -15,7 +15,8 @@ import android.app.Dialog;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
-
+import com.facebook.android.*;
+import com.facebook.android.Facebook.DialogListener;
 
 class FontSize {
 	
@@ -101,7 +102,7 @@ public class reflections extends Activity {
 	public static final int INSERT_ID = Menu.FIRST;
 	static final int DIALOG_CHOOSE_FONT = 0;
 	
-	
+	public static final String FACEBOOK_APP_ID = "175729095772478";
 	
 	
 	public void showRandomQuote(){
@@ -420,6 +421,11 @@ public class reflections extends Activity {
 		                // Perform action on click
 		            	// Toast.makeText(reflections.this, "You have clicked the next button - good on you", Toast.LENGTH_SHORT).show();
 		            	reflections.this.showRandomQuote();
+		            	
+		            	Facebook facebookClient = new Facebook(reflections.FACEBOOK_APP_ID);
+		                // replace APP_API_ID with your own
+		                //facebookClient.authorize();
+		            	
 		            }
 		        });
 	        }
