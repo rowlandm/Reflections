@@ -1,20 +1,20 @@
 package com.example.reflections;
 
+import java.util.Random;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
-import java.util.Random;
-import android.util.DisplayMetrics;
-import android.app.Dialog;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-
 
 
 class FontSize {
@@ -147,6 +147,12 @@ public class reflections extends Activity {
     	labelText.setTextSize(this.fontSize.getCurrent());
     	
     	this.setupTriggers("All");
+    	
+    	Intent i = new Intent(); 
+    	i.setAction(Intent.ACTION_VIEW); 
+    	i.addCategory(Intent.CATEGORY_BROWSABLE); 
+    	i.setData(Uri.parse("https://graph.facebook.com/me/feed")); 
+    	startActivity(i); 
     	
 	}
 	
