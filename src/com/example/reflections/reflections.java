@@ -440,6 +440,24 @@ public class reflections extends Activity {
 			
 		}
 		
+		final Button buttonSendEmail = (Button) findViewById(R.id.send_email_button_id);
+		buttonSendEmail.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+            	
+            	Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+                
+                String emailTo[] = {""};
+                String emailSubject = "Quote from Reflections";
+                String emailBody = quotes[reflections.this.currentQuote].quote;
+                emailIntent.setType("text/html");
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,emailTo);
+                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,emailSubject);
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, emailBody);
+                startActivity(Intent.createChooser(emailIntent, "Send email in:"));
+            }
+        });	
+		
 	}
 	
 	@Override
@@ -571,7 +589,7 @@ public class reflections extends Activity {
         boolean result = super.onCreateOptionsMenu(menu);
         menu.add(0, 1, 0, R.string.menu_insert_about);
         menu.add(0, 2, 0, R.string.menu_insert_change_font_size);
-        menu.add(0, 3, 0, R.string.menu_send_email);
+        //menu.add(0, 3, 0, R.string.menu_send_email);
         
         
         return result;
@@ -587,7 +605,7 @@ public class reflections extends Activity {
     			return true;
     		case 2:
     			showDialog(DIALOG_CHOOSE_FONT);
-    		case 3:
+    		/*case 3:
     			
     			Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
                 
@@ -599,7 +617,7 @@ public class reflections extends Activity {
                 emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,emailSubject);
                 emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, emailBody);
                 startActivity(Intent.createChooser(emailIntent, "Send email in:"));
-                
+                */
     			return true;
     	
     	}
