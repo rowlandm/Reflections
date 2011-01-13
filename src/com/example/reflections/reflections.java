@@ -1,19 +1,20 @@
 package com.example.reflections;
 
+import java.util.Random;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
-import java.util.Random;
-import android.util.DisplayMetrics;
-import android.app.Dialog;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 
 
 
@@ -409,6 +410,8 @@ public class reflections extends Activity {
 	                // Perform action on click
 	            	// Toast.makeText(reflections.this, "You have clicked the next button - good on you", Toast.LENGTH_SHORT).show();
 	            	reflections.this.showRandomQuote();
+	            	
+	            	
 	            }
 	        });		
 	        
@@ -467,6 +470,7 @@ public class reflections extends Activity {
     			new Quote("Nobody was mean to you. Somebody was mean to what he or she thought was you, but not to you. Nobody ever rejects you; they're only rejecting what they think you are. But that cuts both ways. \n\nNobody ever accepts you either. Until people come awake, they are simply accepting or rejecting their image of you. They've fashioned an image of you, and they're rejecting or accepting that. \n\nSee how devastating it is to go deeply into that. It's a bit too liberating. \n\nBut how easy it is to love people when you understand this. How easy it is to love everyone when you don't identify with what they imagine you are or they are. It becomes easy to love them, to love everybody. \n\n -- Anthony De Mello, Awareness",1),
     			new Quote("Be aware of your presence in this room. Say to yourself, “I’m in this room.” It’s as if you were outside yourself looking at yourself. Notice a slightly different feeling than if you were looking at things in the room. Later we’ll ask, “Who is this person who is doing the looking?” I am looking at me. What’s an “I”? What’s “me”? For the time being it’s enough that I watch me, but if you find yourself condemning yourself or approving yourself, don’t stop the condemnation and don’t stop the judgment or approval, just watch it. I’m condemning me; I’m disapproving of me; I’m approving of me. Just look at it, period. Don’t try to change it! Don’t say, “Oh, we were told not to do this.” Just observe what’s going on. As I said to you before, self-observation means watching — observing whatever is going on in you and around you as if it were happening to someone else.\n\n -- Anthony De Mello, Awareness",1),
     			new Quote("'Name one practical, down-to-earth effect of spirituality,' said the skeptic who was ready for an argument. \n\n'Here's one,' said the Master. 'When someone offends you, you can raise your spirits to heights where offenses cannot reach.'\n\n -- Anthony De Mello, One Minute Nonsense",1),
+    			new Quote("Often you can be driven to control the outcome and this comes at a price to your emotional state. Before the outcome arrives comes anxiousness and pressure. If your desired outcome does not eventuate you will get angry. \n\nBut if you surrender to the outcome, you will be calm and composed. If the outcome is not preferred then you can vote with your feet and walk away.",1),
     			new Quote("To a disciple who was forever complaining about others the Master said, 'If it is peace you want, seek to change yourself, not other people. It is easier to protect your feet with slippers than to carpet the whole of the earth.'\n\n -- Anthony De Mello, One Minute Wisdom",1),
     			new Quote("'What is my identity?'\n\n'Nothing,' said the Master.\n\n'You mean that I am an emptiness and a void?' said the incredulous disciple.\n\n'Nothing that can be labeled.' said the Master.\n\n -- Anthony De Mello, One Minute Nonsense",1),
     			new Quote("We depend on the butcher, the baker, the candlestick maker. Interdependence. That’s fine! We set up society this way and we allot different functions to different people for the welfare of everyone, so that we will function better and live more effectively—at least we hope so. But to depend on another psychologically—to depend on another emotionally—what does that imply? It means to depend on another human being for my happiness.\n\nThink about that. Because if you do, the next thing you will be doing, whether you’re aware of it or not, is demanding that other people contribute to your happiness. Then there will be a next step—fear, fear of loss, fear of alienation, fear of rejection, mutual control. Perfect love casts out fear. Where there is love there are no demands, no expectations, no dependency. I do not demand that you make me happy; my happiness does not lie in you. If you were to leave me, I will not feel sorry for myself; I enjoy your company immensely, but I do not cling.\n\n -- Anthony De Mello, Awareness",1),
@@ -567,6 +571,7 @@ public class reflections extends Activity {
         boolean result = super.onCreateOptionsMenu(menu);
         menu.add(0, 1, 0, R.string.menu_insert_about);
         menu.add(0, 2, 0, R.string.menu_insert_change_font_size);
+        menu.add(0, 3, 0, R.string.menu_send_email);
         
         
         return result;
@@ -582,7 +587,19 @@ public class reflections extends Activity {
     			return true;
     		case 2:
     			showDialog(DIALOG_CHOOSE_FONT);
+    		case 3:
     			
+    			Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+                
+                String emailTo[] = {""};
+                String emailSubject = "Quote from Reflections";
+                String emailBody = quotes[this.currentQuote].quote;
+                emailIntent.setType("text/html");
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,emailTo);
+                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,emailSubject);
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, emailBody);
+                startActivity(Intent.createChooser(emailIntent, "Send email in:"));
+                
     			return true;
     	
     	}

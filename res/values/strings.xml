@@ -14,4 +14,5 @@
 <string name="small">Small</string>
 <string name="medium">Medium</string>
 <string name="large">Large</string>
+<string name="menu_send_email">Send Email</string>
 </resources>
