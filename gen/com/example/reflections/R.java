@@ -20,12 +20,13 @@ public final class R {
         public static final int cell1=0x7f060003;
         public static final int label_edittext=0x7f060008;
         public static final int next_button_id=0x7f060007;
-        public static final int next_button_id_bottom=0x7f06000b;
+        public static final int next_button_id_bottom=0x7f06000c;
         public static final int prev_button_id=0x7f060005;
         public static final int prev_button_id_bottom=0x7f060009;
         public static final int random_button_id=0x7f060001;
         public static final int random_button_id_bottom=0x7f06000a;
         public static final int send_email_button_id=0x7f060006;
+        public static final int send_email_button_id_bottom=0x7f06000b;
     }
     public static final class layout {
         public static final int about_us=0x7f030000;

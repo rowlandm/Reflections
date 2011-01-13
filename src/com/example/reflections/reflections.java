@@ -5,9 +5,9 @@ import java.util.Random;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Menu;
@@ -115,8 +115,8 @@ public class reflections extends Activity {
 		
 		DisplayMetrics dm = new DisplayMetrics(); 
     	getWindowManager().getDefaultDisplay().getMetrics(dm); 
-    	int screenHeight = (int) dm.heightPixels;
-    	int screenWidth = (int) dm.widthPixels;
+    	int screenHeight = dm.heightPixels;
+    	int screenWidth = dm.widthPixels;
     	
     	if (screenHeight > screenWidth){
     		setContentView(R.layout.main_portrait);
@@ -127,19 +127,23 @@ public class reflections extends Activity {
     	// hide next button if this is the end
     	if (this.currentQuote + 1 == quotes.length){
 	    	final Button button = (Button) findViewById(R.id.next_button_id);
-	        button.setVisibility(View.GONE);		
+	        button.setVisibility(View.VISIBLE);		
+	        button.setTextColor(Color.parseColor("#BBBBBB"));
 	        
 	        final Button buttonNextBottom = (Button) findViewById(R.id.next_button_id_bottom);
-	        buttonNextBottom.setVisibility(View.GONE);
+	        buttonNextBottom.setVisibility(View.VISIBLE);
+	        buttonNextBottom.setTextColor(Color.parseColor("#BBBBBB"));
     	}
     	
     	// hide prev button if this is the start
     	if (this.currentQuote == 0){
 	    	final Button button = (Button) findViewById(R.id.prev_button_id);
-	        button.setVisibility(View.GONE);		
+	        button.setVisibility(View.VISIBLE);		
+	        button.setTextColor(Color.parseColor("#BBBBBB"));
 	        
 	        final Button buttonPrevBottom = (Button) findViewById(R.id.prev_button_id_bottom);
-	        buttonPrevBottom.setVisibility(View.GONE);
+	        buttonPrevBottom.setVisibility(View.VISIBLE);
+	        buttonPrevBottom.setTextColor(Color.parseColor("#BBBBBB"));
     	}
     	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
@@ -162,8 +166,8 @@ public class reflections extends Activity {
   		
 		DisplayMetrics dm = new DisplayMetrics(); 
     	getWindowManager().getDefaultDisplay().getMetrics(dm); 
-    	int screenHeight = (int) dm.heightPixels;
-    	int screenWidth = (int) dm.widthPixels;
+    	int screenHeight = dm.heightPixels;
+    	int screenWidth = dm.widthPixels;
     	
     	if (screenHeight > screenWidth){
     		setContentView(R.layout.main_portrait);
@@ -174,19 +178,23 @@ public class reflections extends Activity {
     	// hide next button if this is the end
     	if (this.currentQuote + 1 == quotes.length){
 	    	final Button button = (Button) findViewById(R.id.next_button_id);
-	        button.setVisibility(View.GONE);		
+	        button.setVisibility(View.VISIBLE);		
+	        button.setTextColor(Color.parseColor("#BBBBBB"));
 	        
 	        final Button buttonNextBottom = (Button) findViewById(R.id.next_button_id_bottom);
-	        buttonNextBottom.setVisibility(View.GONE);
+	        buttonNextBottom.setVisibility(View.VISIBLE);
+	        buttonNextBottom.setTextColor(Color.parseColor("#BBBBBB"));
     	}
     	
     	// hide prev button if this is the start
     	if (this.currentQuote == 0){
 	    	final Button button = (Button) findViewById(R.id.prev_button_id);
-	        button.setVisibility(View.GONE);		
+	        button.setVisibility(View.VISIBLE);
+	        button.setTextColor(Color.parseColor("#BBBBBB"));
 	        
 	        final Button buttonPrevBottom = (Button) findViewById(R.id.prev_button_id_bottom);
-	        buttonPrevBottom.setVisibility(View.GONE);
+	        buttonPrevBottom.setVisibility(View.VISIBLE);
+	        buttonPrevBottom.setTextColor(Color.parseColor("#BBBBBB"));
     	}
     	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
@@ -211,8 +219,8 @@ public class reflections extends Activity {
     	
 		DisplayMetrics dm = new DisplayMetrics(); 
     	getWindowManager().getDefaultDisplay().getMetrics(dm); 
-    	int screenHeight = (int) dm.heightPixels;
-    	int screenWidth = (int) dm.widthPixels;
+    	int screenHeight = dm.heightPixels;
+    	int screenWidth = dm.widthPixels;
     	
     	if (screenHeight > screenWidth){
     		setContentView(R.layout.main_portrait);
@@ -223,19 +231,23 @@ public class reflections extends Activity {
     	// hide next button if this is the end
     	if (this.currentQuote + 1 == quotes.length){
 	    	final Button button = (Button) findViewById(R.id.next_button_id);
-	        button.setVisibility(View.GONE);		
+	        button.setVisibility(View.VISIBLE);		
+	        button.setTextColor(Color.parseColor("#BBBBBB"));
 	        
 	        final Button buttonNextBottom = (Button) findViewById(R.id.next_button_id_bottom);
-	        buttonNextBottom.setVisibility(View.GONE);
+	        buttonNextBottom.setVisibility(View.VISIBLE);
+	        buttonNextBottom.setTextColor(Color.parseColor("#BBBBBB"));
     	}
     	
     	// hide prev button if this is the start
     	if (this.currentQuote == 0){
 	    	final Button button = (Button) findViewById(R.id.prev_button_id);
-	        button.setVisibility(View.GONE);		
+	        button.setVisibility(View.VISIBLE);		
+	        button.setTextColor(Color.parseColor("#BBBBBB"));
 	        
 	        final Button buttonPrevBottom = (Button) findViewById(R.id.prev_button_id_bottom);
-	        buttonPrevBottom.setVisibility(View.GONE);
+	        buttonPrevBottom.setVisibility(View.VISIBLE);
+	        buttonPrevBottom.setTextColor(Color.parseColor("#BBBBBB"));
     	}
     	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
@@ -264,19 +276,23 @@ public class reflections extends Activity {
     	// hide next button if this is the end
     	if (this.currentQuote + 1 == quotes.length){
 	    	final Button button = (Button) findViewById(R.id.next_button_id);
-	        button.setVisibility(View.GONE);		
+	        button.setVisibility(View.VISIBLE);		
+	        button.setTextColor(Color.parseColor("#BBBBBB"));
 	        
 	        final Button buttonNextBottom = (Button) findViewById(R.id.next_button_id_bottom);
-	        buttonNextBottom.setVisibility(View.GONE);
+	        buttonNextBottom.setVisibility(View.VISIBLE);
+	        buttonNextBottom.setTextColor(Color.parseColor("#BBBBBB"));
     	}
     	
     	// hide prev button if this is the start
     	if (this.currentQuote == 0){
 	    	final Button button = (Button) findViewById(R.id.prev_button_id);
-	        button.setVisibility(View.GONE);		
+	        button.setVisibility(View.VISIBLE);		
+	        button.setTextColor(Color.parseColor("#BBBBBB"));
 	        
 	        final Button buttonPrevBottom = (Button) findViewById(R.id.prev_button_id_bottom);
-	        buttonPrevBottom.setVisibility(View.GONE);
+	        buttonPrevBottom.setVisibility(View.VISIBLE);
+	        button.setTextColor(Color.parseColor("#BBBBBB"));
     	}
     	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
@@ -440,25 +456,44 @@ public class reflections extends Activity {
 			
 		}
 		
-		final Button buttonSendEmail = (Button) findViewById(R.id.send_email_button_id);
-		buttonSendEmail.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-            	
-            	Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-                
-                String emailTo[] = {""};
-                String emailSubject = "Quote from Reflections";
-                String emailBody = quotes[reflections.this.currentQuote].quote;
-                emailIntent.setType("text/html");
-                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,emailTo);
-                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,emailSubject);
-                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, emailBody);
-                startActivity(Intent.createChooser(emailIntent, "Send email in:"));
-            }
-        });	
+		
+		if (ButtonsToTrigger.compareTo("Random") !=0 ) {
+			final Button buttonSendEmail = (Button) findViewById(R.id.send_email_button_id);
+			buttonSendEmail.setOnClickListener(new View.OnClickListener() {
+	            public void onClick(View v) {
+	                // Perform action on click
+	            	reflections.this.sendEmail();
+	            }
+	        });	
+			
+			
+			final Button buttonBottomSendEmail = (Button) findViewById(R.id.send_email_button_id_bottom);
+			buttonBottomSendEmail.setOnClickListener(new View.OnClickListener() {
+	            public void onClick(View v) {
+	                reflections.this.sendEmail();
+	            }
+	        });	
+			
+		}
 		
 	}
+	
+	public void sendEmail(){
+		
+		// Perform action on click
+    	
+    	Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+        
+        String emailTo[] = {""};
+        String emailSubject = "Quote from Reflections";
+        String emailBody = quotes[reflections.this.currentQuote].quote;
+        emailIntent.setType("text/html");
+        emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,emailTo);
+        emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,emailSubject);
+        emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, emailBody);
+        startActivity(Intent.createChooser(emailIntent, "Send email in:"));
+	}
+	
 	
 	@Override
 	public Object onRetainNonConfigurationInstance() {
