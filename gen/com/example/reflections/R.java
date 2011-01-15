@@ -47,6 +47,7 @@ public final class R {
         public static final int menu_copy_to_clipboard=0x7f050010;
         public static final int menu_insert_about=0x7f050006;
         public static final int menu_insert_change_font_size=0x7f05000a;
+        public static final int menu_send_email=0x7f050011;
         public static final int menu_send_sms=0x7f05000f;
         public static final int next=0x7f050002;
         public static final int previous=0x7f050005;

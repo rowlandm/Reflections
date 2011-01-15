@@ -8,10 +8,12 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.inputmethodservice.InputMethodService;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.ClipboardManager;
 import android.util.DisplayMetrics;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -627,6 +629,7 @@ public class reflections extends Activity {
         menu.add(0, 2, 0, R.string.menu_insert_change_font_size);
         menu.add(0, 3, 0, R.string.menu_send_sms);
         menu.add(0, 4, 0, R.string.menu_copy_to_clipboard);
+        menu.add(0, 5, 0, R.string.menu_send_email);
         
         
         return result;
@@ -658,7 +661,9 @@ public class reflections extends Activity {
     			Toast.makeText(reflections.this, "Quote has been copied to the clipboard", Toast.LENGTH_SHORT).show();
     			
     			return true;
-    	
+    		case 5:
+    			reflections.this.sendEmail();
+    			return true;
     	}
     	
     	
