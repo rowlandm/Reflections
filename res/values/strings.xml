@@ -15,4 +15,6 @@
 <string name="medium">Medium</string>
 <string name="large">Large</string>
 <string name="send_email">Email</string>
+<string name="menu_send_sms">Send SMS</string>
+<string name="menu_copy_to_clipboard">Copy to Clipboard</string>
 </resources>

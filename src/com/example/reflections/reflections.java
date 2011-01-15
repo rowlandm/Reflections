@@ -8,13 +8,16 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.ClipboardManager;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 
@@ -498,8 +501,6 @@ public class reflections extends Activity {
 	@Override
 	public Object onRetainNonConfigurationInstance() {
 		
-		int currentQuote = this.currentQuote;
-		
 		final savedState currentState = new savedState();
 		
 		currentState.fontSize = this.fontSize.getCurrent();
@@ -624,7 +625,8 @@ public class reflections extends Activity {
         boolean result = super.onCreateOptionsMenu(menu);
         menu.add(0, 1, 0, R.string.menu_insert_about);
         menu.add(0, 2, 0, R.string.menu_insert_change_font_size);
-        //menu.add(0, 3, 0, R.string.menu_send_email);
+        menu.add(0, 3, 0, R.string.menu_send_sms);
+        menu.add(0, 4, 0, R.string.menu_copy_to_clipboard);
         
         
         return result;
@@ -640,19 +642,21 @@ public class reflections extends Activity {
     			return true;
     		case 2:
     			showDialog(DIALOG_CHOOSE_FONT);
-    		/*case 3:
+    			return true;
+    		case 3:
     			
-    			Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-                
-                String emailTo[] = {""};
-                String emailSubject = "Quote from Reflections";
-                String emailBody = quotes[this.currentQuote].quote;
-                emailIntent.setType("text/html");
-                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,emailTo);
-                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,emailSubject);
-                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, emailBody);
-                startActivity(Intent.createChooser(emailIntent, "Send email in:"));
-                */
+		        // the destination number
+		        String number = "";
+		        startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", number, null)).putExtra("sms_body", quotes[reflections.this.currentQuote].quote));
+
+    			return true;
+    		case 4:
+    			ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 
+
+    			clipboard.setText(quotes[reflections.this.currentQuote].quote);
+    			
+    			Toast.makeText(reflections.this, "Quote has been copied to the clipboard", Toast.LENGTH_SHORT).show();
+    			
     			return true;
     	
     	}
