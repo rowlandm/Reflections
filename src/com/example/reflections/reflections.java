@@ -8,15 +8,14 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.inputmethodservice.InputMethodService;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.ClipboardManager;
 import android.util.DisplayMetrics;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -630,6 +629,7 @@ public class reflections extends Activity {
         menu.add(0, 3, 0, R.string.menu_send_sms);
         menu.add(0, 4, 0, R.string.menu_copy_to_clipboard);
         menu.add(0, 5, 0, R.string.menu_send_email);
+        menu.add(0, 6, 0, "ANother option");
         
         
         return result;
@@ -664,6 +664,15 @@ public class reflections extends Activity {
     		case 5:
     			reflections.this.sendEmail();
     			return true;
+    		case 6:
+    			 final Intent intent = new Intent(Intent.ACTION_SEND);
+
+    			 intent.setType("text/plain");
+    			 intent.putExtra(Intent.EXTRA_SUBJECT, "Quote from Reflections");
+    			 intent.putExtra(Intent.EXTRA_TEXT, quotes[reflections.this.currentQuote].quote);
+
+    			 startActivity(Intent.createChooser(intent, "Share this quote"));
+    			 return true;
     	}
     	
     	
