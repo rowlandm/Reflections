@@ -25,8 +25,8 @@ public final class R {
         public static final int prev_button_id_bottom=0x7f060009;
         public static final int random_button_id=0x7f060001;
         public static final int random_button_id_bottom=0x7f06000a;
-        public static final int send_email_button_id=0x7f060006;
-        public static final int send_email_button_id_bottom=0x7f06000b;
+        public static final int share_button_id=0x7f060006;
+        public static final int share_button_id_bottom=0x7f06000b;
     }
     public static final class layout {
         public static final int about_us=0x7f030000;
@@ -50,9 +50,14 @@ public final class R {
         public static final int menu_send_email=0x7f050011;
         public static final int menu_send_sms=0x7f05000f;
         public static final int next=0x7f050002;
+        public static final int pick_a_font_size=0x7f050016;
         public static final int previous=0x7f050005;
+        public static final int quote_copied_to_clipboard=0x7f050013;
+        public static final int quote_from_reflections=0x7f050014;
         public static final int random=0x7f050007;
         public static final int send_email=0x7f05000e;
+        public static final int share=0x7f050012;
+        public static final int share_this_quote=0x7f050015;
         public static final int small=0x7f05000b;
     }
     public static final class style {

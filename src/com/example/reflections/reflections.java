@@ -296,7 +296,7 @@ public class reflections extends Activity {
 	        
 	        final Button buttonPrevBottom = (Button) findViewById(R.id.prev_button_id_bottom);
 	        buttonPrevBottom.setVisibility(View.VISIBLE);
-	        button.setTextColor(Color.parseColor("#BBBBBB"));
+	        buttonPrevBottom.setTextColor(Color.parseColor("#BBBBBB"));
     	}
     	
     	TextView labelText = (TextView) findViewById(R.id.label_edittext);
@@ -333,7 +333,7 @@ public class reflections extends Activity {
         	final CharSequence[] items = {"Small", "Medium", "Large"};
 
     		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    		builder.setTitle("Pick a font size");
+    		builder.setTitle(R.string.pick_a_font_size);
     		builder.setSingleChoiceItems(items,reflections.this.fontSize.getOrder(), new DialogInterface.OnClickListener() {
     		    public void onClick(DialogInterface dialog, int item) {
     		    	
@@ -462,19 +462,19 @@ public class reflections extends Activity {
 		
 		
 		if (ButtonsToTrigger.compareTo("Random") !=0 ) {
-			final Button buttonSendEmail = (Button) findViewById(R.id.send_email_button_id);
-			buttonSendEmail.setOnClickListener(new View.OnClickListener() {
+			final Button buttonShare = (Button) findViewById(R.id.share_button_id);
+			buttonShare.setOnClickListener(new View.OnClickListener() {
 	            public void onClick(View v) {
 	                // Perform action on click
-	            	reflections.this.sendEmail();
+	            	reflections.this.shareQuote();
 	            }
 	        });	
 			
 			
-			final Button buttonBottomSendEmail = (Button) findViewById(R.id.send_email_button_id_bottom);
-			buttonBottomSendEmail.setOnClickListener(new View.OnClickListener() {
+			final Button buttonBottomShare = (Button) findViewById(R.id.share_button_id_bottom);
+			buttonBottomShare.setOnClickListener(new View.OnClickListener() {
 	            public void onClick(View v) {
-	                reflections.this.sendEmail();
+	                reflections.this.shareQuote();
 	            }
 	        });	
 			
@@ -482,10 +482,11 @@ public class reflections extends Activity {
 		
 	}
 	
-	public void sendEmail(){
+	public void shareQuote(){
 		
 		// Perform action on click
     	
+    	/* Share with email -- old 
     	Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
         
         String emailTo[] = {""};
@@ -495,7 +496,15 @@ public class reflections extends Activity {
         emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,emailTo);
         emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,emailSubject);
         emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, emailBody);
-        startActivity(Intent.createChooser(emailIntent, "Send email in:"));
+        startActivity(Intent.createChooser(emailIntent, "Send email in:")); */
+		
+		 final Intent intent = new Intent(Intent.ACTION_SEND);
+
+		 intent.setType("text/plain");
+		 intent.putExtra(Intent.EXTRA_SUBJECT, R.string.quote_from_reflections);
+		 intent.putExtra(Intent.EXTRA_TEXT, quotes[reflections.this.currentQuote].quote);
+
+		 startActivity(Intent.createChooser(intent, getString(R.string.share_this_quote)));
 	}
 	
 	
@@ -626,10 +635,8 @@ public class reflections extends Activity {
         boolean result = super.onCreateOptionsMenu(menu);
         menu.add(0, 1, 0, R.string.menu_insert_about);
         menu.add(0, 2, 0, R.string.menu_insert_change_font_size);
-        menu.add(0, 3, 0, R.string.menu_send_sms);
-        menu.add(0, 4, 0, R.string.menu_copy_to_clipboard);
-        menu.add(0, 5, 0, R.string.menu_send_email);
-        menu.add(0, 6, 0, "ANother option");
+        menu.add(0, 3, 0, R.string.menu_copy_to_clipboard);
+        menu.add(0, 4, 0, R.string.share);
         
         
         return result;
@@ -647,32 +654,16 @@ public class reflections extends Activity {
     			showDialog(DIALOG_CHOOSE_FONT);
     			return true;
     		case 3:
-    			
-		        // the destination number
-		        String number = "";
-		        startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", number, null)).putExtra("sms_body", quotes[reflections.this.currentQuote].quote));
-
-    			return true;
-    		case 4:
     			ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 
 
     			clipboard.setText(quotes[reflections.this.currentQuote].quote);
     			
-    			Toast.makeText(reflections.this, "Quote has been copied to the clipboard", Toast.LENGTH_SHORT).show();
+    			Toast.makeText(reflections.this, R.string.quote_copied_to_clipboard, Toast.LENGTH_SHORT).show();
     			
     			return true;
-    		case 5:
-    			reflections.this.sendEmail();
+    		case 4:
+    			reflections.this.shareQuote();
     			return true;
-    		case 6:
-    			 final Intent intent = new Intent(Intent.ACTION_SEND);
-
-    			 intent.setType("text/plain");
-    			 intent.putExtra(Intent.EXTRA_SUBJECT, "Quote from Reflections");
-    			 intent.putExtra(Intent.EXTRA_TEXT, quotes[reflections.this.currentQuote].quote);
-
-    			 startActivity(Intent.createChooser(intent, "Share this quote"));
-    			 return true;
     	}
     	
     	
